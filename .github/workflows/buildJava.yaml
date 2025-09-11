@@ -1,0 +1,16 @@
+name: Java CI with Maven - Test and package
+on: [push] #ça c'est le puch du dépot, jsp si c'est du main ou de la bransh
+jobs: #se qui va faire
+  BuildJava: #nom du job :Build Java
+    name: Build Java
+    runs-on: ubuntu-latest #OS ou execute le job
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: dev
+      - uses: actions/setup-java@v4
+        with:
+          distribution: 'corretto'
+          java-version: '21'
+      - name: Creer repertoire #une commande pour teste class
+        run: mvn -B package
