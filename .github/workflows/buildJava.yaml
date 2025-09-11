@@ -1,7 +1,7 @@
 name: Java CI with Maven - Test and package
 on:
-  pull_request: #ça c'est le pull_request <https://docs.github.com/fr/actions/reference/workflows-and-actions/workflow-syntax?utm_source=chatgpt.com>
-    branches:
+   #ça c'est le pull_request <https://docs.github.com/fr/actions/reference/workflows-and-actions/workflow-syntax?utm_source=chatgpt.com>
+    branches:pull_request:
       - main
 jobs: #se qui va faire
   BuildJava: #nom du job :Build Java
@@ -15,4 +15,4 @@ jobs: #se qui va faire
           distribution: 'corretto'
           java-version: '21'
       - name: Build with Maven #une commande pour teste class
-        run: mvn -B package
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=$(echo ${{ github.repository }} | sed 's-/-_-')
