@@ -1,13 +1,15 @@
 name: Java CI with Maven - Test and package
-on: [push] #ça c'est le puch du dépot, jsp si c'est du main ou de la bransh
+on:
+  pull_request: #ça c'est le pull_request <https://docs.github.com/fr/actions/reference/workflows-and-actions/workflow-syntax?utm_source=chatgpt.com>
+    branches:
+      - main
 jobs: #se qui va faire
   BuildJava: #nom du job :Build Java
     name: Build Java
     runs-on: ubuntu-latest #OS ou execute le job
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: main
+
       - uses: actions/setup-java@v4
         with:
           distribution: 'corretto'
