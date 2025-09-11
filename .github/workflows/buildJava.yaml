@@ -7,10 +7,10 @@ jobs: #se qui va faire
     steps:
       - uses: actions/checkout@v4
         with:
-          ref: dev
+          ref: main
       - uses: actions/setup-java@v4
         with:
           distribution: 'corretto'
           java-version: '21'
-      - name: Creer repertoire #une commande pour teste class
+      - name: Build with Maven #une commande pour teste class
         run: mvn -B package
