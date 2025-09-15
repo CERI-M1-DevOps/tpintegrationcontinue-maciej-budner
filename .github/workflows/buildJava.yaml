@@ -15,4 +15,8 @@ jobs: #se qui va faire
           distribution: 'corretto'
           java-version: '21'
       - name: Build with Maven #une commande pour teste class
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=$(echo ${{ github.repository }} | sed 's-/-_-')
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar \
+          -Dsonar.projectKey=$(echo ${{ github.repository }} | sed 's-/-_-') \
+          -Dsonar.organization=ceri-m1-devops \
+          -Dsonar.host.url=https://sonarcloud.io \
+          -Dsonar.login=${{ secrets.SONAR_TOKEN }}
