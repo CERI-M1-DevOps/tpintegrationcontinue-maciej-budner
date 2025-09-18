@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class ListeSimpleTest {
+class ListeSimpleTest {
 
     ListeSimple listeATester;
 
@@ -45,11 +45,11 @@ public class ListeSimpleTest {
 
     @Test
     void toStringDonneTousLesNoeuds() {
-        System.out.println(listeATester);
+        asserEquals("ListeSimple()", System.out.println(listeATester));
         listeATester.ajout(1);
         listeATester.ajout(2);
         listeATester.ajout(3);
-        System.out.println(listeATester);
+        asserEquals("ListeSimple(Noeud(3), Noeud(2), Noeud(1))", System.out.println(listeATester));
     }
 
     @Test
@@ -114,7 +114,7 @@ public class ListeSimpleTest {
 
     @Test
     void supprimeTousListeVide() {
-        listeATester.supprimePremier(1);
+        listeATester.supprimeTous(1);
         assertNull(listeATester.tete);
         assertEquals(0, listeATester.getSize());
     }

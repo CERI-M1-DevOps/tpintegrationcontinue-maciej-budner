@@ -118,10 +118,8 @@ public class ListeSimple {
     }
 
     public void echanger(Noeud r1, Noeud r2) {
-        if (r1 == r2){
-            return;
-        }
-        else{
+        if (r1 != r2){
+
             Noeud precedentR1;
             Noeud precedentR2;
             if (r1 != tete && r2 != tete) {
