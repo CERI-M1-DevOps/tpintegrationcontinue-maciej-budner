@@ -50,6 +50,7 @@ class ListeSimpleTest {
         listeATester.ajout(2);
         listeATester.ajout(3);
         System.out.println(listeATester);
+        assertEquals(3,listeATester.tete.getElement());
     }
 
     @Test
