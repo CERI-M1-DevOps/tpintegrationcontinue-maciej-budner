@@ -20,11 +20,14 @@ jobs:
       - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
-          java-version: '21'    # ✅ Corrigé (avant tu avais mis '17')
+          java-version: '21'
           distribution: 'temurin'
 
-      - name: Generate Javadoc with Maven
-        run: mvn -B javadoc:javadoc
+      - name: Build project and generate Javadoc
+        run: mvn -B clean package javadoc:javadoc
+
+      - name: Debug - list generated files
+        run: ls -R target/site/apidocs || echo "No Javadoc generated"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
