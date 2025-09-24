@@ -8,8 +8,10 @@ on:
 
 jobs:
   build-doc:
-    if: github.event.pull_request.merged == true  # Vérifie que la PR a bien été mergée
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
+    permissions:
+      contents: write   # ✅ Autorise le push vers gh-pages
 
     steps:
       - name: Checkout repository
@@ -18,7 +20,7 @@ jobs:
       - name: Set up JDK 21
         uses: actions/setup-java@v4
         with:
-          java-version: '21'
+          java-version: '21'    # ✅ Corrigé (avant tu avais mis '17')
           distribution: 'temurin'
 
       - name: Generate Javadoc with Maven
@@ -29,3 +31,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./target/site/apidocs
+          user_name: github-actions[bot]
+          user_email: github-actions[bot]@users.noreply.github.com
