@@ -24,7 +24,7 @@ jobs:
           distribution: 'temurin'
 
       - name: Build project and generate Javadoc
-        run: mvn -B clean package javadoc:javadoc
+        run: mvn -B clean verify javadoc:javadoc
 
       - name: Debug - list generated files
         run: ls -R target/site/apidocs || echo "No Javadoc generated"
